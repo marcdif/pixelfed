@@ -69,30 +69,30 @@ jobs:
       # See: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
       matrix:
         php_version:
-          - 8.2
+          # - 8.2
           - 8.3
         target_runtime:
-          - apache
-          - fpm
+          # - apache
+          # - fpm
           - nginx
         php_base:
-          - apache
+          # - apache
           - fpm
 
-        # See: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#excluding-matrix-configurations
-        # See: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategymatrixexclude
-        exclude:
-          # targeting [apache] runtime with [fpm] base type doesn't make sense
-          - target_runtime: apache
-            php_base: fpm
+        # # See: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs#excluding-matrix-configurations
+        # # See: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategymatrixexclude
+        # exclude:
+        #   # targeting [apache] runtime with [fpm] base type doesn't make sense
+        #   - target_runtime: apache
+        #     php_base: fpm
 
-          # targeting [fpm] runtime with [apache] base type doesn't make sense
-          - target_runtime: fpm
-            php_base: apache
+        #   # targeting [fpm] runtime with [apache] base type doesn't make sense
+        #   - target_runtime: fpm
+        #     php_base: apache
 
-          # targeting [nginx] runtime with [apache] base type doesn't make sense
-          - target_runtime: nginx
-            php_base: apache
+        #   # targeting [nginx] runtime with [apache] base type doesn't make sense
+        #   - target_runtime: nginx
+        #     php_base: apache
 
     # See: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-using-concurrency-and-the-default-behavior
     concurrency:
@@ -106,15 +106,15 @@ jobs:
     env:
       # Set the repo variable [DOCKER_HUB_USERNAME] to override the default
       # at https://github.com/<user>/<project>/settings/variables/actions
-      DOCKER_HUB_USERNAME: ${{ vars.DOCKER_HUB_USERNAME || 'pixelfed' }}
+      DOCKER_HUB_USERNAME: ''
 
       # Set the repo variable [DOCKER_HUB_ORGANISATION] to override the default
       # at https://github.com/<user>/<project>/settings/variables/actions
-      DOCKER_HUB_ORGANISATION: ${{ vars.DOCKER_HUB_ORGANISATION || 'pixelfed' }}
+      DOCKER_HUB_ORGANISATION: ''
 
       # Set the repo variable [DOCKER_HUB_REPO] to override the default
       # at https://github.com/<user>/<project>/settings/variables/actions
-      DOCKER_HUB_REPO: ${{ vars.DOCKER_HUB_REPO || 'pixelfed' }}
+      DOCKER_HUB_REPO: ''
 
       # For Docker Hub pushing to work, you need the secret [DOCKER_HUB_TOKEN]
       # set to your Personal Access Token at https://github.com/<user>/<project>/settings/secrets/actions
