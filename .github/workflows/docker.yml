@@ -156,8 +156,7 @@ jobs:
         id: meta
         with:
           images: |
-            name=ghcr.io/${{ github.repository }},enable=true
-            name=${{ env.DOCKER_HUB_ORGANISATION }}/${{ env.DOCKER_HUB_REPO }},enable=${{ env.HAS_DOCKER_HUB_CONFIGURED }}
+            name=ghcr.io/${{ github.repository }}
           flavor: |
             latest=auto
             suffix=-${{ matrix.target_runtime }}-${{ matrix.php_version }}
